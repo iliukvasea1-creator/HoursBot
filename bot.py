@@ -114,18 +114,25 @@ async def save_hours(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if already_sent_today(users[user_id]):
-        await update.message.reply_text(
-            "❌ Ви вже відправили години за сьогодні."
+    await update.message.reply_text(
+        "❌ Ви вже відправили години за сьогодні."
     )
     return
 
-    date = datetime.now().strftime("%d.%m.%Y")
+date = datetime.now().strftime("%d.%m.%Y")
 
-    add_work_hours(
-        date=date,
-        worker=users[user_id],
-        hours=hours,
-    )
+add_work_hours(
+    date=date,
+    worker=users[user_id],
+    hours=hours,
+)
+
+await update.message.reply_text(
+    f"✅ Записано!\n\n"
+    f"Дата: {date}\n"
+    f"Працівник: {users[user_id]}\n"
+    f"Години: {hours}"
+)
 
     await update.message.reply_text(
         f"✅ Записано!\n\n"
