@@ -114,10 +114,10 @@ async def save_hours(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if already_sent_today(users[user_id]):
-    await update.message.reply_text(
-        "❌ Ви вже відправили години за сьогодні."
-    )
-    return
+        await update.message.reply_text(
+            "❌ Ви вже відправили години за сьогодні."
+        )
+        return
 
 date = datetime.now().strftime("%d.%m.%Y")
 
