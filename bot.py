@@ -119,20 +119,13 @@ async def save_hours(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-date = datetime.now().strftime("%d.%m.%Y")
+    date = datetime.now().strftime("%d.%m.%Y")
 
-add_work_hours(
-    date=date,
-    worker=users[user_id],
-    hours=hours,
-)
-
-await update.message.reply_text(
-    f"✅ Записано!\n\n"
-    f"Дата: {date}\n"
-    f"Працівник: {users[user_id]}\n"
-    f"Години: {hours}"
-)
+    add_work_hours(
+        date=date,
+        worker=users[user_id],
+        hours=hours,
+    )
 
     await update.message.reply_text(
         f"✅ Записано!\n\n"
@@ -140,6 +133,8 @@ await update.message.reply_text(
         f"Працівник: {users[user_id]}\n"
         f"Години: {hours}"
     )
+
+  
 
 
 def main():
